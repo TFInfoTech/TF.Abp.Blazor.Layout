@@ -29,11 +29,6 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
 
         private MenuDataItem[] _menuData = { };
         private bool IsCollapseShown { get; set; }
-        private string[] Locales { get; set; }
-        private IDictionary<string, string> LanguageLabels { get; set; }
-        private IDictionary<string, string> LanguageIcons { get; set; }
-        private IReadOnlyList<LanguageInfo> _otherLanguages;
-        private LanguageInfo _currentLanguage;
 
         protected override void OnInitialized()
         {
@@ -46,7 +41,6 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
             Logger.LogInformation("start to ini layout async");
             await base.OnInitializedAsync();
             await IniMainMenu();
-            await IniLanguages();
         }
 
         private async Task IniMainMenu ()
@@ -67,51 +61,6 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
                 _menuData = GetMenuDataItems(menu.Items);
             }
         }
-        private async Task IniLanguages()
-        {
-            var selectedLanguageName = await JsRuntime.InvokeAsync<string>(
-                "localStorage.getItem",
-                "Abp.SelectedLanguage"
-                );
-
-            _otherLanguages = await LanguageProvider.GetLanguagesAsync();
-
-            if (!_otherLanguages.Any())
-            {
-                return;
-            }
-
-            if (!selectedLanguageName.IsNullOrWhiteSpace())
-            {
-                _currentLanguage = _otherLanguages.FirstOrDefault(l => l.UiCultureName == selectedLanguageName);
-            }
-
-            if (_currentLanguage == null)
-            {
-                _currentLanguage = _otherLanguages.FirstOrDefault(l => l.UiCultureName == CultureInfo.CurrentUICulture.Name);
-            }
-
-            if (_currentLanguage == null)
-            {
-                _currentLanguage = _otherLanguages.FirstOrDefault();
-            }
-
-            //language menu
-            List<string> _locales = new List<string>();
-            LanguageLabels = new Dictionary<string, string>();
-            LanguageIcons = new Dictionary<string, string>();
-            foreach (LanguageInfo language in _otherLanguages)
-            {
-                Logger.LogInformation("language:{0}", language.CultureName);
-                _locales.Add(language.CultureName);
-                LanguageLabels.Add(language.CultureName, language.DisplayName);
-                LanguageIcons.Add(language.CultureName, language.FlagIcon);
-            }
-            this.Locales = _locales.ToArray();
-            _otherLanguages = _otherLanguages.Where(l => l != _currentLanguage).ToImmutableList();
-
-        }
-
         private MenuDataItem[] GetMenuDataItems(ApplicationMenuItemList menuItems)
         {
             if (menuItems != null && menuItems.Count > 0)
@@ -135,18 +84,6 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
                 return antMenuItems;
             }
             return null;
-        }
-
-        private async Task ChangeLanguageAsync (MenuItem item)//(LanguageInfo language)
-        {
-            Logger.LogInformation("menu clicked =>{0}", item.Key);
-
-            await JsRuntime.InvokeVoidAsync(
-                "localStorage.setItem",
-                "Abp.SelectedLanguage", new LanguageInfo(item.Key, item.Key, "").UiCultureName 
-                );
-
-            await JsRuntime.InvokeVoidAsync("location.reload");
         }
 
         private void ToggleCollapse()

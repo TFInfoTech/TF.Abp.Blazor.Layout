@@ -19,8 +19,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
         [Inject] public ILogger<RightContent> Logger { get; set; }
         [Inject] IJSRuntime JsRuntime { get; set; }
         [Inject] protected NavigationManager NavigationManager { get; set; }
-
-        //[Inject] protected IUserService UserService { get; set; }
+        [Inject] ICurrentUser CurrentUser { get; set; }
         //[Inject] protected IProjectService ProjectService { get; set; }
         [Inject] protected MessageService MessageService { get; set; }
         [Inject] ILanguageProvider LanguageProvider { get; set; }
@@ -35,7 +34,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
         private IDictionary<string, string> LanguageIcons { get; set; }
         private IReadOnlyList<LanguageInfo> _otherLanguages;
         private LanguageInfo _currentLanguage;
-
+        private string UserAvatar { get; set; }
 
         [Parameter] public EventCallback<MenuItem> OnUserItemSelected { get; set; }
 
@@ -64,7 +63,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
         {
             await base.OnInitializedAsync();
             await IniLanguages();
-
+            IniUserInformation();
             SetClassMap();
             //_currentUser = await UserService.GetCurrentUserAsync();
             //var notices = await ProjectService.GetNoticesAsync();
@@ -94,6 +93,19 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
                 case "logout":
                     NavigationManager.NavigateTo("/user/login");
                     break;
+            }
+        }
+        private void IniUserInformation()
+        {
+            UserAvatar = "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png";
+            if (CurrentUser.IsAuthenticated)
+            {
+                string avatar=CurrentUser.FindClaimValue("Avatar");
+                Logger.LogInformation("avatar =>{0}", avatar);
+                if (avatar!=null)
+                {
+                    UserAvatar = avatar;
+                }
             }
         }
         private async Task IniLanguages()
@@ -133,8 +145,8 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
             {
                 Logger.LogInformation("language:{0}", language.CultureName);
                 _locales.Add(language.CultureName);
-                LanguageLabels.Add(language.CultureName, language.DisplayName);
-                LanguageIcons.Add(language.CultureName, language.FlagIcon);
+                LanguageLabels.Add(language.CultureName, language.FlagIcon);
+                LanguageIcons.Add(language.CultureName, language.DisplayName);
             }
             this.Locales = _locales.ToArray();
             _otherLanguages = _otherLanguages.Where(l => l != _currentLanguage).ToImmutableList();

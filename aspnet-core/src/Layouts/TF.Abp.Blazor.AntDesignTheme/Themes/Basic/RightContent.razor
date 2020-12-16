@@ -14,34 +14,37 @@
             </span>
         </AntDesign.Tooltip>
     </SpaceItem>
-    <SpaceItem>
-        <NoticeIcon ClearText="清空"
-                    ViewMoreText="查看更多"
-                    Count="_count"
-                    OnClear="HandleClear"
-                    OnViewMore="HandleViewMore">
-            <NoticeList TabKey="notification"
-                        Title="通知"
-                        EmptyText="你已查看所有通知"
-                        ShowViewMore
-                        Data="_notifications"/>
-            <NoticeList TabKey="message"
-                        Title="消息"
-                        EmptyText="您已读完所有消息"
-                        ShowViewMore
-                        Data="_messages"/>
-            <NoticeList TabKey="event"
-                        Title="待办"
-                        EmptyText="你已完成所有待办"
-                        ShowViewMore
-                        Data="_events"/>
-        </NoticeIcon>
-    </SpaceItem>
-    <SpaceItem>
-        @*<AvatarDropdown Name="@_currentUser.Name"
-                        Avatar="@_currentUser.Avatar"
-                        OnItemSelected="HandleSelectUser" />*@
-    </SpaceItem>
+    @if (CurrentUser.IsAuthenticated)
+    {
+        <SpaceItem>
+            <NoticeIcon ClearText="清空"
+                        ViewMoreText="查看更多"
+                        Count="_count"
+                        OnClear="HandleClear"
+                        OnViewMore="HandleViewMore">
+                <NoticeList TabKey="notification"
+                            Title="通知"
+                            EmptyText="你已查看所有通知"
+                            ShowViewMore
+                            Data="_notifications" />
+                <NoticeList TabKey="message"
+                            Title="消息"
+                            EmptyText="您已读完所有消息"
+                            ShowViewMore
+                            Data="_messages" />
+                <NoticeList TabKey="event"
+                            Title="待办"
+                            EmptyText="你已完成所有待办"
+                            ShowViewMore
+                            Data="_events" />
+            </NoticeIcon>
+        </SpaceItem>
+        <SpaceItem>
+            <AvatarDropdown Name="@CurrentUser.Name"
+                            Avatar="@UserAvatar"
+                            OnItemSelected="HandleSelectUser" />
+        </SpaceItem>
+     }
     <SpaceItem>
         <SelectLang OnItemSelected="HandleSelectLang" Locales="Locales" LanguageLabels="LanguageLabels" LanguageIcons="LanguageIcons" />
     </SpaceItem>
