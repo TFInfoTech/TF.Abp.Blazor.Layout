@@ -1,0 +1,29 @@
+﻿@using Volo.Abp.UI.Navigation
+@{
+    var elementId = MenuItem.ElementId ?? "MenuItem_" + MenuItem.Name.Replace(".", "_");
+    var cssClass = string.IsNullOrEmpty(MenuItem.CssClass) ? string.Empty : MenuItem.CssClass;
+    var disabled = MenuItem.IsDisabled ? "disabled" : string.Empty;
+    var url = string.IsNullOrEmpty(MenuItem.Url) ? "#" : MenuItem.Url;
+}
+@if (MenuItem.IsLeaf)
+{
+    <BarDropdownItem To="@url">
+        @MenuItem.DisplayName
+    </BarDropdownItem>
+}
+else
+{
+    <BarDropdown>
+        <BarDropdownToggle>
+            @MenuItem.DisplayName
+        </BarDropdownToggle>
+        <BarDropdownMenu>
+            @foreach (var childMenuItem in MenuItem.Items)
+            {
+                <SecondLevelNavMenuItem MenuItem="@childMenuItem"/>
+            }
+        </BarDropdownMenu>
+    </BarDropdown>
+}
+@code {
+}

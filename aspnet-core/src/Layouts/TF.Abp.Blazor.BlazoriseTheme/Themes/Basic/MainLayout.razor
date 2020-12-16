@@ -1,0 +1,174 @@
+﻿@inherits LayoutComponentBase
+
+<Blazorise.Layout Sider="true">
+    <LayoutSider>
+        <LayoutSiderContent>
+            <Bar Breakpoint="Breakpoint.Desktop" NavigationBreakpoint="Breakpoint.Tablet" ThemeContrast="ThemeContrast.Dark"
+                 Mode="BarMode.VerticalInline" CollapseMode="BarCollapseMode.Small">
+                <BarToggler />
+                <BarBrand>
+                    <BarItem>
+                        <BarLink To="">
+                            <BarIcon IconName="customIcon" />
+                            Blazorise Demo
+                        </BarLink>
+                    </BarItem>
+                </BarBrand>
+                <BarMenu>
+                    <BarStart>
+                                <NavMenu />
+
+                    </BarStart>
+                </BarMenu>
+            </Bar>
+        </LayoutSiderContent>
+    </LayoutSider>
+    <Blazorise.Layout>
+        <LayoutHeader Fixed="true">
+            <Bar @bind-Visible="@topbarVisible" Breakpoint="Breakpoint.Desktop" Background="Background.Primary" ThemeContrast="ThemeContrast.Light">
+                <BarBrand>
+                    <BarItem>
+                        <BarLink To="">
+                            <BarIcon IconName="IconName.Dashboard" />
+                            Blazorise Demo
+                        </BarLink>
+                    </BarItem>
+                </BarBrand>
+                <BarToggler />
+                <BarMenu>
+                    <BarStart>
+                        <BarItem>
+                            <BarLink To="https://blazorise.com/">Home</BarLink>
+                        </BarItem>
+                        <BarItem>
+                            <BarLink To="https://blazorise.com/docs/">Documentation</BarLink>
+                        </BarItem>
+                        <BarItem>
+                            <BarDropdown>
+                                <BarDropdownToggle>More</BarDropdownToggle>
+                                <BarDropdownMenu>
+                                    <BarDropdownItem To="https://blazorise.com/docs/quick-start/">
+                                        Quick-Start Guide
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="https://blazorise.com/docs/usage/">
+                                        Usage
+                                    </BarDropdownItem>
+                                </BarDropdownMenu>
+                            </BarDropdown>
+                        </BarItem>
+                    </BarStart>
+                    <BarEnd>
+                        <BarItem>
+                            <BarDropdown>
+                                <BarDropdownToggle><Blazorise.Icon Name="IconName.Tint" /> Theme</BarDropdownToggle>
+                                <BarDropdownMenu Style="padding: 15px; min-width:550px;" RightAligned="true">
+                                    <Blazorise.Row>
+                                        <Blazorise.Column Margin="Margin.Is2.FromBottom">
+                                            <Field>
+                                                <Blazorise.Switch TValue="bool" Checked="@(Theme?.Enabled == true)" CheckedChanged="@OnThemeEnabledChanged">Theme enabled</Blazorise.Switch>
+                                            </Field>
+                                        </Blazorise.Column>
+                                    </Blazorise.Row>
+                                    <Blazorise.Row>
+                                        <Blazorise.Column Margin="Margin.Is2.FromBottom">
+                                            <Field>
+                                                <Check TValue="bool" Checked="@(Theme?.IsGradient == true)" CheckedChanged="@OnGradientChanged">Gradient colors</Check>
+                                            </Field>
+                                            <Field>
+                                                <Check TValue="bool" Checked="@(Theme?.IsRounded == true)" CheckedChanged="@OnRoundedChanged">Rounded elements</Check>
+                                            </Field>
+                                        </Blazorise.Column>
+                                    </Blazorise.Row>
+                                    <Blazorise.Row>
+                                        <Blazorise.Column>
+                                            <Container Fluid="true">
+                                                @*<ThemeColorSelector Value="@(Theme?.ColorOptions?.Primary)" ValueChanged="@OnThemeColorChanged"></ThemeColorSelector>*@
+                                            </Container>
+                                        </Blazorise.Column>
+                                    </Blazorise.Row>
+                                </BarDropdownMenu>
+                            </BarDropdown>
+                        </BarItem>
+                        <BarItem>
+                            <BarLink To="https://github.com/stsrki/blazorise">GitHub</BarLink>
+                        </BarItem>
+                    </BarEnd>
+                </BarMenu>
+            </Bar>
+        </LayoutHeader>
+        <LayoutContent Padding="Padding.Is4.OnX">
+            @Body
+        </LayoutContent>
+    </Blazorise.Layout>
+</Blazorise.Layout>
+
+@code{void OnThemeEnabledChanged(bool value)
+            {
+                if (Theme == null)
+                    return;
+
+                Theme.Enabled = value;
+
+                Theme.ThemeHasChanged();
+            }
+
+            void OnGradientChanged(bool value)
+            {
+                if (Theme == null)
+                    return;
+
+                Theme.IsGradient = value;
+
+                //if ( Theme.GradientOptions == null )
+                //    Theme.GradientOptions = new GradientOptions();
+
+                //Theme.GradientOptions.BlendPercentage = 80;
+
+                Theme.ThemeHasChanged();
+            }
+
+            void OnRoundedChanged(bool value)
+            {
+                if (Theme == null)
+                    return;
+
+                Theme.IsRounded = value;
+
+                Theme.ThemeHasChanged();
+            }
+
+            void OnThemeColorChanged(string value)
+            {
+                if (Theme == null)
+                    return;
+
+                if (Theme.ColorOptions == null)
+                    Theme.ColorOptions = new ThemeColorOptions();
+
+                if (Theme.BackgroundOptions == null)
+                    Theme.BackgroundOptions = new ThemeBackgroundOptions();
+
+                if (Theme.TextColorOptions == null)
+                    Theme.TextColorOptions = new ThemeTextColorOptions();
+
+                Theme.ColorOptions.Primary = value;
+                Theme.BackgroundOptions.Primary = value;
+                Theme.TextColorOptions.Primary = value;
+
+                if (Theme.InputOptions == null)
+                    Theme.InputOptions = new ThemeInputOptions();
+
+                //Theme.InputOptions.Color = value;
+                Theme.InputOptions.CheckColor = value;
+                Theme.InputOptions.SliderColor = value;
+
+                Theme.ThemeHasChanged();
+            }
+
+            private bool topbarVisible = false;
+            private bool uiElementsVisible = true;
+
+            [CascadingParameter] protected Theme Theme { get; set; }
+
+            RenderFragment customIcon =@<img src="/brand-logo.png" style="width:32px; height: 32px" />;
+}

@@ -1,0 +1,35 @@
+﻿@using AntDesign.Pro.Layout
+@using Volo.Abp.UI.Navigation;
+
+@inherits LayoutComponentBase
+
+<AntDesign.Pro.Layout.BasicLayout Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+                                  MenuData="_menuData">
+    <RightContentRender>
+        <TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic.RightContent/>
+    </RightContentRender>
+    <ChildContent>
+        @Body
+    </ChildContent>
+</AntDesign.Pro.Layout.BasicLayout>
+<SettingDrawer />
+
+@*@inject HttpClient HttpClient*@
+@code
+{ 
+    //private MenuDataItem[] MenuData { get; set; } = { };
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    await base.OnInitializedAsync();
+    //    var data = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+    //    //MenuDataItem item = new MenuDataItem();
+    //    //item.Path = "/";
+    //    //item.Name = "Dashboard";
+    //    //item.Key = "dashboard";
+    //    //item.Icon = "dashboard";
+    //    //MenuData.Append(item);
+
+    //    MenuData = data;
+    //}
+}
