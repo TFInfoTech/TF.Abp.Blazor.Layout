@@ -101,7 +101,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
             if (CurrentUser.IsAuthenticated)
             {
                 string avatar=CurrentUser.FindClaimValue("Avatar");
-                Logger.LogInformation("avatar =>{0}", avatar);
+                Logger.LogDebug("avatar =>{0}", avatar);
                 if (avatar!=null)
                 {
                     UserAvatar = avatar;
@@ -143,7 +143,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
             LanguageIcons = new Dictionary<string, string>();
             foreach (LanguageInfo language in _otherLanguages)
             {
-                Logger.LogInformation("language:{0}", language.CultureName);
+                Logger.LogDebug("language:{0}", language.CultureName);
                 _locales.Add(language.CultureName);
                 LanguageLabels.Add(language.CultureName, language.FlagIcon);
                 LanguageIcons.Add(language.CultureName, language.DisplayName);
@@ -156,7 +156,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
 
         private async Task HandleSelectLang(MenuItem item)
         {
-            Logger.LogInformation("menu clicked =>{0}", item.Key);
+            Logger.LogDebug("menu clicked =>{0}", item.Key);
 
             await JsRuntime.InvokeVoidAsync(
                 "localStorage.setItem",
