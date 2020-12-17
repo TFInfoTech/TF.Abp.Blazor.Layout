@@ -6,6 +6,6 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
     [Dependency(ReplaceServices = true)]
     public class LayoutBrandingProvider : DefaultBrandingProvider
     {
-        public override string AppName => "AntDesign Layout Demo";
+        public override string AppName => "TF AntDesign Layout Demo";
     }
 }

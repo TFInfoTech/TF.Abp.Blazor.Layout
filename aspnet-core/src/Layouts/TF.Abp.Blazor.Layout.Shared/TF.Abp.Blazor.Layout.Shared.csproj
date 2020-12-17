@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Localization\TFBlazorLayout\ar.json" />
+    <None Remove="Localization\TFBlazorLayout\cs.json" />
+    <None Remove="Localization\TFBlazorLayout\de-DE.json" />
+    <None Remove="Localization\TFBlazorLayout\en.json" />
+    <None Remove="Localization\TFBlazorLayout\es.json" />
+    <None Remove="Localization\TFBlazorLayout\fr.json" />
+    <None Remove="Localization\TFBlazorLayout\hu.json" />
+    <None Remove="Localization\TFBlazorLayout\pl-PL.json" />
+    <None Remove="Localization\TFBlazorLayout\pt-BR.json" />
+    <None Remove="Localization\TFBlazorLayout\ru.json" />
+    <None Remove="Localization\TFBlazorLayout\sl.json" />
+    <None Remove="Localization\TFBlazorLayout\tr.json" />
+    <None Remove="Localization\TFBlazorLayout\vi.json" />
+    <None Remove="Localization\TFBlazorLayout\zh-Hans.json" />
+    <None Remove="Localization\TFBlazorLayout\zh-Hant.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\TFBlazorLayout\ar.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\cs.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\de-DE.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\en.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\es.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\fr.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\hu.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\pl-PL.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\pt-BR.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\ru.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\sl.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\tr.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\vi.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\zh-Hans.json" />
+    <EmbeddedResource Include="Localization\TFBlazorLayout\zh-Hant.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.1" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain.Shared" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain.Shared" Version="4.0.1" />
+  </ItemGroup>
+
+</Project>

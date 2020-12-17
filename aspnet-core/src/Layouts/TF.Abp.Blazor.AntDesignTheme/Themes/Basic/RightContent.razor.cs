@@ -11,11 +11,17 @@ using Volo.Abp.Localization;
 using System;
 using System.Globalization;
 using System.Collections.Immutable;
+using Microsoft.Extensions.Options;
+using TF.Abp.Blazor.Layout.AntDesignTheme.Setting;
+using Microsoft.Extensions.Localization;
+using TF.Abp.Blazor.Layout.Localization;
+using Localization.Resources.AbpUi;
 
 namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
 {
     public partial class RightContent
     {
+        [Inject] IOptions<TFAntDesignSettings> SettingState { get; set; }
         [Inject] public ILogger<RightContent> Logger { get; set; }
         [Inject] IJSRuntime JsRuntime { get; set; }
         [Inject] protected NavigationManager NavigationManager { get; set; }
@@ -23,22 +29,22 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
         //[Inject] protected IProjectService ProjectService { get; set; }
         [Inject] protected MessageService MessageService { get; set; }
         [Inject] ILanguageProvider LanguageProvider { get; set; }
+        [Inject] IStringLocalizer<AbpUiResource> L { get; set; }
 
         private NoticeIconData[] _notifications = { };
         private NoticeIconData[] _messages = { };
         private NoticeIconData[] _events = { };
         private int _count = 0;
+        private string UserAvatar { get; set; }
 
+        private bool IsMultiLanguage { get { return Locales != null && Locales.Length > 1; } }
         private string[] Locales { get; set; }
         private IDictionary<string, string> LanguageLabels { get; set; }
         private IDictionary<string, string> LanguageIcons { get; set; }
         private IReadOnlyList<LanguageInfo> _otherLanguages;
         private LanguageInfo _currentLanguage;
-        private string UserAvatar { get; set; }
 
         [Parameter] public EventCallback<MenuItem> OnUserItemSelected { get; set; }
-
-
         private List<AutoCompleteDataItem<string>> DefaultOptions { get; set; } = new List<AutoCompleteDataItem<string>>
         {
             new AutoCompleteDataItem<string>
@@ -100,9 +106,9 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
             UserAvatar = "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png";
             if (CurrentUser.IsAuthenticated)
             {
-                string avatar=CurrentUser.FindClaimValue("Avatar");
+                string avatar = CurrentUser.FindClaimValue("Avatar");
                 Logger.LogDebug("avatar =>{0}", avatar);
-                if (avatar!=null)
+                if (avatar != null)
                 {
                     UserAvatar = avatar;
                 }
@@ -187,5 +193,11 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
         {
             await MessageService.Info("Click on view more");
         }
+
+        private void OnClickLogin()
+        {
+            NavigationManager.NavigateTo("/authentication/login");
+        }
+
     }
 }

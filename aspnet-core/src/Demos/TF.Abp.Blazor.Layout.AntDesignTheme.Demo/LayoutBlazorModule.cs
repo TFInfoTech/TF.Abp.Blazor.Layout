@@ -18,13 +18,14 @@ using Volo.Abp.TenantManagement.Blazor;
 using TF.Abp.Blazor.Layout.AntDesignTheme;
 using TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic;
 using AntDesign.Pro.Layout;
+using TF.Abp.Blazor.Layout.AntDesignTheme.Setting;
 
 namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
 {
     [DependsOn(
         typeof(AbpAutofacWebAssemblyModule),
         typeof(LayoutHttpApiClientModule),
-        typeof(TFAbpBlazorAntDesignThemeModule),
+        typeof(TFAbpBlazorAntDesignThemeModule),//Added
         typeof(AbpIdentityBlazorModule),
         typeof(AbpTenantManagementBlazorModule)
     )]
@@ -38,8 +39,7 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
             ConfigureAuthentication(builder);
             ConfigureHttpClient(context, environment);
             ConfigureBlazorise(context);
-            context.Services.AddAntDesign();
-            context.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
+            ConfigureAntDesign(context, builder);//new configure for AntDesign
             ConfigureRouter(context);
             ConfigureUI(builder);
             ConfigureMenu(context);
@@ -67,6 +67,12 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
             context.Services
                 .AddBootstrapProviders()
                 .AddFontAwesomeIcons();
+        }
+        private void ConfigureAntDesign(ServiceConfigurationContext context, WebAssemblyHostBuilder builder)
+        {
+            context.Services.AddAntDesign();
+            context.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
+            context.Services.Configure<TFAntDesignSettings>(builder.Configuration.GetSection("TFAntDesignSettings"));
         }
 
         private static void ConfigureAuthentication(WebAssemblyHostBuilder builder)

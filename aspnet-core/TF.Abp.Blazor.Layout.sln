@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TF.Abp.Blazor.Layout.AntDes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TF.Abp.Blazor.Layout.BlazoriseTheme", "src\Layouts\TF.Abp.Blazor.BlazoriseTheme\TF.Abp.Blazor.Layout.BlazoriseTheme.csproj", "{7A797C59-0CA1-409A-9F9E-E249344B791F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TF.Abp.Blazor.Layout.Shared", "src\Layouts\TF.Abp.Blazor.Layout.Shared\TF.Abp.Blazor.Layout.Shared.csproj", "{73F0E1F4-939A-41D6-95F5-15F52C529E59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{7A797C59-0CA1-409A-9F9E-E249344B791F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A797C59-0CA1-409A-9F9E-E249344B791F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A797C59-0CA1-409A-9F9E-E249344B791F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F0E1F4-939A-41D6-95F5-15F52C529E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F0E1F4-939A-41D6-95F5-15F52C529E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F0E1F4-939A-41D6-95F5-15F52C529E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F0E1F4-939A-41D6-95F5-15F52C529E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -171,6 +177,7 @@ Global
 		{AC6FA55E-B3E3-451D-BAD5-CEDB400C1D88} = {3F33F01B-BD39-4132-98F8-AFCCF121367B}
 		{DE396947-F890-48E0-9342-55BBB65CEF18} = {AC9B6126-BBF1-4CA6-B476-3284AE6AAB85}
 		{7A797C59-0CA1-409A-9F9E-E249344B791F} = {AC9B6126-BBF1-4CA6-B476-3284AE6AAB85}
+		{73F0E1F4-939A-41D6-95F5-15F52C529E59} = {AC9B6126-BBF1-4CA6-B476-3284AE6AAB85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
