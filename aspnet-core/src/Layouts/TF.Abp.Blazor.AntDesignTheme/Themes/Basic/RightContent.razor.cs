@@ -16,6 +16,7 @@ using TF.Abp.Blazor.Layout.AntDesignTheme.Setting;
 using Microsoft.Extensions.Localization;
 using TF.Abp.Blazor.Layout.Localization;
 using Localization.Resources.AbpUi;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
 {
@@ -30,6 +31,9 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
         [Inject] protected MessageService MessageService { get; set; }
         [Inject] ILanguageProvider LanguageProvider { get; set; }
         [Inject] IStringLocalizer<AbpUiResource> L { get; set; }
+        [Inject] NavigationManager Navigation { get; set; }
+        [Inject] SignOutSessionStateManager SignOutManager { get; set; }
+
 
         private NoticeIconData[] _notifications = { };
         private NoticeIconData[] _messages = { };
@@ -85,25 +89,31 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
                 .Clear()
                 .Add("right");
         }
+        private async Task BeginSignOut()
+        {
+            await SignOutManager.SetSignOutState();
+            Navigation.NavigateTo("authentication/logout");
+        }
 
-        public void HandleSelectUser(MenuItem item)
+
+        public async Task HandleSelectUser(MenuItem item)
         {
             switch (item.Key)
             {
                 case "center":
-                    NavigationManager.NavigateTo("/account/center");
+                    //NavigationManager.NavigateTo("/account/center");
                     break;
                 case "setting":
-                    NavigationManager.NavigateTo("/account/settings");
+                    //NavigationManager.NavigateTo("/account/settings");
                     break;
                 case "logout":
-                    NavigationManager.NavigateTo("/user/login");
+                    await BeginSignOut();
                     break;
             }
         }
         private void IniUserInformation()
         {
-            UserAvatar = "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png";
+            UserAvatar = string.Empty;
             if (CurrentUser.IsAuthenticated)
             {
                 string avatar = CurrentUser.FindClaimValue("Avatar");

@@ -1,0 +1,38 @@
+﻿@namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
+@inherits AntDomComponentBase
+
+<AntDesign.Dropdown 
+    Style="display: inherit; width: inherit;"
+    OverlayClassName="container">
+    <Overlay>
+        <Menu Class="menu" OnMenuItemClicked="OnItemSelected">
+            <MenuItem Key="center">
+                <AntDesign.Icon Type="user" Theme="outline" />
+                @L["PersonalInfo"]
+            </MenuItem>
+            <MenuItem Key="setting">
+                <AntDesign.Icon Type="setting" Theme="outline" />
+                @L["ManageYourAccount"]
+            </MenuItem>
+            <!--todo: missing component: menu-divider-->
+            <li Class="ant-dropdown-menu-item-divider"></li>
+            <MenuItem Key="logout">
+                <AntDesign.Icon Type="logout" Theme="outline" />
+                @L["Logout"]
+            </MenuItem>
+        </Menu>
+    </Overlay>
+    <ChildContent>
+        <span class="action account">
+            @if (Avatar==string.Empty)
+            {
+                <Avatar Size="small" Class="avatar" Icon="user" Alt="avatar" />
+            }
+            else
+            {
+                <Avatar Size="small" Class="avatar" Src="@Avatar" Alt="avatar" />
+            }
+            <span class="name anticon">@Name</span>
+        </span>
+    </ChildContent>
+</AntDesign.Dropdown>

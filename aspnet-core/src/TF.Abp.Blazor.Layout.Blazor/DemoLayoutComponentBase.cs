@@ -3,9 +3,9 @@ using Volo.Abp.AspNetCore.Components;
 
 namespace TF.Abp.Blazor.Layout.Blazor
 {
-    public abstract class LayoutComponentBase : AbpComponentBase
+    public abstract class DemoLayoutComponentBase : AbpComponentBase
     {
-        protected LayoutComponentBase()
+        protected DemoLayoutComponentBase()
         {
             LocalizationResource = typeof(LayoutResource);
         }

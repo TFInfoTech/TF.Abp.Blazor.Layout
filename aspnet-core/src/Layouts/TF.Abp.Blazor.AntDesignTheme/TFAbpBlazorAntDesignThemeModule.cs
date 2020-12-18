@@ -12,8 +12,7 @@ using Volo.Abp.VirtualFileSystem;
 namespace TF.Abp.Blazor.Layout.AntDesignTheme
 {
     [DependsOn(
-        typeof(AbpAspNetCoreComponentsWebAssemblyThemingModule),
-        typeof(TFBlazorLayoutSharedModule)
+        typeof(AbpAspNetCoreComponentsWebAssemblyThemingModule)
         )]
     public class TFAbpBlazorAntDesignThemeModule : AbpModule
     {
@@ -30,20 +29,6 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme
             {
                 options.Contributors.Add(new BasicThemeToolbarContributor());
             });
-
-            //Configure<AbpVirtualFileSystemOptions>(options =>
-            //{
-            //    // "YourRootNameSpace" is the root namespace of your project. It can be empty if your root namespace is empty.
-            //    options.FileSets.AddEmbedded<TFAbpBlazorAntDesignThemeModule>();
-            //});
-
-            //Configure<AbpLocalizationOptions>(options =>
-            //{
-            //    //Define a new localization resource (TestResource)
-            //    options.Resources
-            //        .Add<TFBlazorLayoutResource>("en")
-            //        .AddVirtualJson("/Localization/TFBlazorLayout");
-            //});
         }
     }
 }
