@@ -40,11 +40,11 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
                     "Layout.Home",
                     l["Menu:Home"],
                     "/",
-                    icon: "Home"
+                    icon: "home"    //To be update for TF AntDesign Theme
                 )
             );
 
-            context.Menu.GetAdministration().Icon = "setting";
+            context.Menu.GetAdministration().Icon = "setting"; //To be added for TF AntDesign Theme
 
             return Task.CompletedTask;
         }

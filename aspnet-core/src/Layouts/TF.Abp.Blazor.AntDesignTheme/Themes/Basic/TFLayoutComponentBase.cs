@@ -1,5 +1,4 @@
-﻿using TF.Abp.Blazor.Layout.Localization;
-using Volo.Abp.AspNetCore.Components;
+﻿using Volo.Abp.AspNetCore.Components;
 
 namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
 {
@@ -7,7 +6,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
     {
         protected TFLayoutComponentBase()
         {
-            LocalizationResource = typeof(TFBlazorLayoutResource);
+            //LocalizationResource = typeof(TFBlazorLayoutResource);
         }
     }
 }

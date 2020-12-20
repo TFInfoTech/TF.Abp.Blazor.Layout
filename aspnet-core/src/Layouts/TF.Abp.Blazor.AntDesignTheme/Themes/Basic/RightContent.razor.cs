@@ -14,7 +14,6 @@ using System.Collections.Immutable;
 using Microsoft.Extensions.Options;
 using TF.Abp.Blazor.Layout.AntDesignTheme.Setting;
 using Microsoft.Extensions.Localization;
-using TF.Abp.Blazor.Layout.Localization;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 

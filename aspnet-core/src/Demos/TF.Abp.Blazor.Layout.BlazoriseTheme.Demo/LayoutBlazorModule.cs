@@ -22,7 +22,7 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
     [DependsOn(
         typeof(AbpAutofacWebAssemblyModule),
         typeof(LayoutHttpApiClientModule),
-        typeof(TFAbpBlazorLayoutBlazoriseThemeModule),
+        typeof(TFAbpBlazorLayoutBlazoriseThemeModule),//To be added for TF Blazorise Theme
         typeof(AbpIdentityBlazorModule),
         typeof(AbpTenantManagementBlazorModule)
     )]

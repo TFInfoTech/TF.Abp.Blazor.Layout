@@ -1,7 +1,5 @@
 ﻿using AntDesign.Pro.Layout;
 using Microsoft.Extensions.DependencyInjection;
-using TF.Abp.Blazor.Layout.Localization;
-using TF.Abp.Blazor.Layout.Shared;
 using Volo.Abp.AspNetCore.Components.WebAssembly.Theming;
 using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Routing;
 using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Toolbars;

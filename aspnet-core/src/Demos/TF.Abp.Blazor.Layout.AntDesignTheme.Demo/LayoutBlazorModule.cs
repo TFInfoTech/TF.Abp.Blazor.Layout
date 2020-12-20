@@ -25,7 +25,7 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
     [DependsOn(
         typeof(AbpAutofacWebAssemblyModule),
         typeof(LayoutHttpApiClientModule),
-        typeof(TFAbpBlazorAntDesignThemeModule),//Added
+        typeof(TFAbpBlazorAntDesignThemeModule),//To be added for TF AntDesign Theme
         typeof(AbpIdentityBlazorModule),
         typeof(AbpTenantManagementBlazorModule)
     )]
@@ -39,7 +39,7 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
             ConfigureAuthentication(builder);
             ConfigureHttpClient(context, environment);
             ConfigureBlazorise(context);
-            ConfigureAntDesign(context, builder);//new configure for AntDesign
+            ConfigureAntDesign(context, builder);   //To be added for TF AntDesign Theme
             ConfigureRouter(context);
             ConfigureUI(builder);
             ConfigureMenu(context);
@@ -68,6 +68,12 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
                 .AddBootstrapProviders()
                 .AddFontAwesomeIcons();
         }
+        /// <summary>
+        /// To be added for TF AntDesign Theme
+        /// Config AntDesign and Layout setting
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="builder"></param>
         private void ConfigureAntDesign(ServiceConfigurationContext context, WebAssemblyHostBuilder builder)
         {
             context.Services.AddAntDesign();
