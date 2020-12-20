@@ -144,7 +144,7 @@ https://github.com/TFInfoTech/TF.Abp.Blazor.Layout/tree/main/aspnet-core/src/Lay
     <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
     <!--TF:Scripts-->
     ```
-## Blazorize Theme
+## Blazorise Theme
 
 ### Nuget Package
 You can reference the Theme by install the package to your Blazor wasm project.
