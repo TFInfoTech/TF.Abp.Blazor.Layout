@@ -62,7 +62,7 @@ namespace TF.Abp.Blazor.Layout.BlazoriseTheme.Demo
                     "Account.Manage",
                     accountStringLocalizer["ManageYourProfile"],
                     $"{identityServerUrl.EnsureEndsWith('/')}Account/Manage",
-                    icon: "fa fa-cog",
+                    icon: "user",
                     order: 1000,
                     null,
                     "_blank"));
