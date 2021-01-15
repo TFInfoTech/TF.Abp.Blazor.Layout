@@ -1,24 +1,6 @@
 ﻿@inherits AntDomComponentBase
 
 <Space Class="@ClassMapper.Class">
-    @if (SettingState.Value.IsDisplaySearch)
-    {
-        <SpaceItem>
-            <HeaderSearch Class="action search"
-                          Placeholder="站内搜索"
-                          DefaultValue="umi ui"
-                          Options="DefaultOptions" />
-        </SpaceItem>}
-    @if (SettingState.Value.IsDisplayHelp)
-    {
-        <SpaceItem>
-            <AntDesign.Tooltip Title="@("Help")" Placement="@PlacementType.Bottom">
-                <span class="action">
-                    <AntDesign.Icon Type="question-circle" Theme="outline" />
-                </span>
-            </AntDesign.Tooltip>
-        </SpaceItem>
-    }
     @if (CurrentUser.IsAuthenticated)
     {
         <SpaceItem>
@@ -53,6 +35,24 @@
     else
     {
         <AntDesign.Button Type="primary" Shape="round" Icon="login" Size="small" OnClick="OnClickLogin">@L["Login"]</AntDesign.Button>
+    }
+    @if (SettingState.Value.IsDisplaySearch)
+    {
+        <SpaceItem>
+            <HeaderSearch Class="action search"
+                          Placeholder="站内搜索"
+                          DefaultValue="umi ui"
+                          Options="DefaultOptions" />
+        </SpaceItem>}
+    @if (SettingState.Value.IsDisplayHelp)
+    {
+        <SpaceItem>
+            <AntDesign.Tooltip Title="@("Help")" Placement="@PlacementType.Bottom">
+                <span class="action">
+                    <AntDesign.Icon Type="question-circle" Theme="outline" />
+                </span>
+            </AntDesign.Tooltip>
+        </SpaceItem>
     }
     @if (IsMultiLanguage)
     {
