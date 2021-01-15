@@ -6,13 +6,13 @@
     <Company>TF Tech</Company>
     <Description>Abp Vnext for Blazor integrated with Ant Design Pro Layout</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
-    <Version>1.1.1</Version>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign.Pro.Layout" Version="0.1.0-nightly-201127071242" />
+    <PackageReference Include="AntDesign.Pro.Layout" Version="0.1.0-nightly-210113091622" />
     <PackageReference Include="ConfigureAwait.Fody" Version="3.3.1" />
     <PackageReference Include="Fody" Version="6.3.0">
       <PrivateAssets>all</PrivateAssets>
