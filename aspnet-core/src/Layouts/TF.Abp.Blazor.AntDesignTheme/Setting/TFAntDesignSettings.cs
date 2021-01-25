@@ -10,5 +10,7 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Setting
     {
         public bool IsDisplaySearch { get; set; }
         public bool IsDisplayHelp { get; set; }
+        public string Copyright { get; set; }
+        public string CopyrightUrl { get; set; }
     }
 }

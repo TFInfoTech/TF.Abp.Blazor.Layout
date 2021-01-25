@@ -26,15 +26,14 @@ namespace TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic
         [Inject] public ILogger<MainLayout> Logger { get; set; }
         [Inject] IJSRuntime JsRuntime { get; set; }
         [Inject] ILanguageProvider LanguageProvider { get; set; }
+        [Parameter] public RenderFragment FooterRender { get; set; }
 
         private MenuDataItem[] _menuData = { };
         private bool IsCollapseShown { get; set; }
 
         protected override void OnInitialized()
         {
-            Logger.LogInformation("start to ini layout");
             NavigationManager.LocationChanged += OnLocationChanged;
-
         }
         protected override async Task OnInitializedAsync()
         {
