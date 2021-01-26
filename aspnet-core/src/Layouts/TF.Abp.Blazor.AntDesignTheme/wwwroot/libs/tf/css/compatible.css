@@ -11,10 +11,19 @@
 
 .container {
     width: unset;
+    padding-right:unset;
+    padding-left:unset;
 }
 
 .anticon-global
 {
     margin-left:0.9em;
     margin-top:1.6em;
+}
+
+.popover {
+    display: none;
+    max-width: none;
+    border: unset;
+    border-radius: unset;
 }
