@@ -1,7 +1,29 @@
 ﻿@page "/authentication/{action}"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-<RemoteAuthenticatorView Action="@Action" />
+@using Microsoft.AspNetCore.Components.Authorization
+@inject NavigationManager NavigationManager
+
+<RemoteAuthenticatorView Action="@Action"/>
 
 @code{
     [Parameter] public string Action { get; set; }
+    [CascadingParameter]    public Task<AuthenticationState> AuthState { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        //Console.WriteLine($"set return url {NavigationManager.BaseUri}");
+        //raView.AuthenticationState.ReturnUrl = NavigationManager.BaseUri;
+        //StateHasChanged();
+
+        //解决无密码登录进入后无法自动跳转到首页的问题
+        if (RemoteAuthenticationActions.IsAction(RemoteAuthenticationActions.LogInCallback, Action))
+            NavigationManager.NavigateTo($"{NavigationManager.BaseUri}/authentication/login");
+
+    }
+
+    //private void RedirectToDefalutPage()
+    //{
+    //    Console.WriteLine("redirect to default");
+    //    NavigationManager.NavigateTo(NavigationManager.BaseUri);
+    //}
 }
