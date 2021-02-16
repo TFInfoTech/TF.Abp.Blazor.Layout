@@ -7,13 +7,13 @@
     <Description>Abp Vnext for Blazor integrated with Ant Design Pro Layout
 Add return url to RemoteAuthenticatorView in the Authetication</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.1.10.2</AssemblyVersion>
-    <FileVersion>1.1.10.2</FileVersion>
-    <Version>1.1.10.2</Version>
+    <AssemblyVersion>1.1.11.0</AssemblyVersion>
+    <FileVersion>1.1.11.0</FileVersion>
+    <Version>1.1.11.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign.Pro.Layout" Version="0.1.0-nightly-210113091622" />
+    <PackageReference Include="AntDesign.Pro.Layout" Version="0.1.0.1" />
     <PackageReference Include="ConfigureAwait.Fody" Version="3.3.1" />
     <PackageReference Include="Fody" Version="6.3.0">
       <PrivateAssets>all</PrivateAssets>

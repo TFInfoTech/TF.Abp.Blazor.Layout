@@ -7,22 +7,24 @@
 @inject IOptions<ProSettings> SettingState
 @inject IOptions<TFAntDesignSettings> TFSettingState
 
-<AntDesign.Pro.Layout.BasicLayout Logo="SettingState.Value.IconfontUrl"
-                                  MenuData="_menuData">
-    <RightContentRender>
-        <TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic.RightContent />
-    </RightContentRender>
-    <ChildContent>
-        @Body
-    </ChildContent>
-    <FooterRender>
-        <div class="ant-pro-global-footer">
-            <div class="ant-pro-global-footer-copyright">
-                Copyright <AntDesign.Icon Type="copyright" /><a href="@TFSettingState.Value.CopyrightUrl"> @TFSettingState.Value.Copyright</a>
+<CascadingValue Value="false" Name="Collapsed">
+    <AntDesign.Pro.Layout.BasicLayout Logo="SettingState.Value.IconfontUrl"
+                                      MenuData="_menuData">
+        <RightContentRender>
+            <TF.Abp.Blazor.Layout.AntDesignTheme.Themes.Basic.RightContent />
+        </RightContentRender>
+        <ChildContent>
+            @Body
+        </ChildContent>
+        <FooterRender>
+            <div class="ant-pro-global-footer">
+                <div class="ant-pro-global-footer-copyright">
+                    Copyright <AntDesign.Icon Type="copyright" /><a href="@TFSettingState.Value.CopyrightUrl"> @TFSettingState.Value.Copyright</a>
+                </div>
             </div>
-        </div>
-</FooterRender>
-</AntDesign.Pro.Layout.BasicLayout>
+        </FooterRender>
+    </AntDesign.Pro.Layout.BasicLayout>
+</CascadingValue>
 <SettingDrawer />
 
 @*@inject HttpClient HttpClient*@
